@@ -12,7 +12,7 @@ class items:
 
  # intended but it doesn't work FSR therefore nothing for identities also
 class MainSim: 
-    # I set up a lot of foundation for myself so i can do a lot more with this later, some things planned:
+    # Set up a lot of foundation so i can do a lot more with this later, some things planned:
     # statistics of pulls: etc, how much of a session was EGO, 3 stars, Etc
     # statistics of % drawn of each sinner 
     # GUI which will make it more than a command to be run
