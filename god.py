@@ -229,10 +229,10 @@ class MainSim:
                 pulls -= 1
             MainSim.tenth() # guaranteed 2star extraction
             count -= 1
-        draws = int(len(MainSim.results)) - 1
-        while draws > -1:
-            MainSim.results_str.append(MainSim.results[draws].name)
-            draws -= 1
+        Total = int(len(MainSim.results)) - 1
+        while Total > -1:
+            MainSim.results_str.append(MainSim.results[Total].name)
+            Total -= 1
         random.shuffle(MainSim.results_str)
         print(MainSim.results_str) 
     def draw1(count):
@@ -248,11 +248,11 @@ class MainSim:
                 pulls -= 1
             MainSim.tenth() # guaranteed 2star extraction
             count -= 1
-        draws = int(len(MainSim.results)) - 1 # how many items were drawn 
+        Total = int(len(MainSim.results)) - 1 # how many items were drawn -1 cuz index meme
         results1 = sorted(MainSim.results, key=lambda self: self.rarity, reverse=True)   # sort by rarity
-        while draws > -1:
-            MainSim.results_str.append(results1[draws].name)
-            draws -= 1 
+        while Total > -1:
+            MainSim.results_str.append(results1[Total].name)
+            Total -= 1 
         print(MainSim.results_str)
 
     # changes:
