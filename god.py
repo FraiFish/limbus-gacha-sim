@@ -231,6 +231,3 @@ class MainSim:
         random.shuffle(MainSim.results_str)
         print(MainSim.results_str)
     
-    
-
-MainSim.draw10(2)
