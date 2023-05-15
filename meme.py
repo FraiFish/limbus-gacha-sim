@@ -23,6 +23,9 @@ class MainSim:
     # EGO cannot be drawn twice in a session feature
     # if draw 0 or 00 just make it output "0" or "00"
     # interact to keep drawing instead of all at once
+    # some sort of database??
+    # actual luck vs calculated chance
+    # draw until you have specific thing
     # code below 
 
     ### big list of everything in the game (probably a better way to do it)
