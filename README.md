@@ -1,2 +1,2 @@
 # limbus-gacha-sim
-120 pulls for R.B Ryoshu simmered my rage
+made it so the exact object selected is retained instead of just calling its .name value
