@@ -108,6 +108,8 @@ class MainSim:
     Stew = items("Lifetime Stew - Sinclair", "Sinclair", Teth, egotype)
     Nihil = items("Ya Sunyata Tad Rupam - Outis", "Outis", Teth, egotype)
     Bad = items("Lantern - Gregor", "Gregor", Teth, egotype)
+    WarpSang = items("Dimensional Shredder - Yi Sang", "Yi Sang", He, egotype)
+    WarpLu = items("Dimensional Shredder - Hong Lu", "Hong Lu", He, egotype)
     EGO = [
         Rocks,
         Dog1,
@@ -117,7 +119,9 @@ class MainSim:
         I_Am_Fiiire,
         Stew,
         Nihil,
-        Bad
+        Bad,
+        WarpSang,
+        WarpLu
     ]
     OOO = [
         V_50,
@@ -189,18 +193,34 @@ class MainSim:
     # 2.namedtuple or something
     # --------------------------------------
     def pullone(): # Standard extraction
-        pull = random.choices([MainSim.EGO[random.randint(0, 8)], MainSim.OOO[random.randint(0, 14)], MainSim.OO[random.randint(0, 19)], MainSim.O[random.randint(0, 11)]], 
+        pull = random.choices([MainSim.EGO[random.randint(0, 10)], MainSim.OOO[random.randint(0, 14)], MainSim.OO[random.randint(0, 19)], MainSim.O[random.randint(0, 11)]], 
                               [1.2996, 2.8995, 12.8, 83.0004], k=1)
         drop = pull[0] # i was fucking stupid literally just take the index 0 oh my god
         MainSim.results.append(drop)
         return drop.name, drop.rarity, drop.belongsTo, drop.type # for later
     #footnote: k is the amount of variables it wants to output
     def tenth(): # 10th pull 
-        pull = random.choices([MainSim.EGO[random.randint(0, 8)], MainSim.OOO[random.randint(0, 14)], MainSim.OO[random.randint(0, 19)]], 
+        pull = random.choices([MainSim.EGO[random.randint(0, 10)], MainSim.OOO[random.randint(0, 14)], MainSim.OO[random.randint(0, 19)]], 
                               [1.2996, 2.8995, 95.8009], k=1)
         drop = pull[0]
         MainSim.results.append(drop)
         return drop.name, drop.rarity, drop.belongsTo, drop.type 
+    def special_banner():
+        Fausto = [
+            MainSim.Dog1,
+            MainSim.Bear,
+            MainSim.Grip,
+            MainSim.L_Faust,
+            MainSim.W_Faust,
+            MainSim.LCB_Sinner_Knows_Everything
+        ]
+        pull = random.choices([MainSim.EGO[random.randint(0, 10)], Fausto[random.randint(0, 1)],
+                                MainSim.OOO[random.randint(0, 14)], Fausto[2], MainSim.OO[random.randint(0, 19)], 
+                                Fausto[random.randint(3,4)], MainSim.O[random.randint(0, 11)], Fausto[5]], 
+                              [0.794, 0.5056, 1.54615, 1.35335, 7.68, 5.12, 48.4171, 34.5827], k=1) 
+        drop = pull[0]
+        MainSim.results.append(drop)
+        return drop.name, drop.rarity, drop.belongsTo, drop.type
     # --------------------------------------
     # testing area
     """ def test1(): # testing lists
@@ -237,6 +257,20 @@ class MainSim:
             Total -= 1
         random.shuffle(MainSim.results_str)
         print(MainSim.results_str) 
+    def favored10(count):
+        while count > 0: # the number of 10 extracts to sim
+            pulls = 10
+            while pulls > 1:
+                MainSim.special_banner() # weighted for character
+                pulls -= 1
+            MainSim.tenth() # guaranteed 2star extraction
+            count -= 1
+        Total = int(len(MainSim.results)) - 1
+        while Total > -1:
+            MainSim.results_str.append(MainSim.results[Total].name)
+            Total -= 1
+        random.shuffle(MainSim.results_str)
+        print(MainSim.results_str)
     def draw1(count):
         while count > 0:
                 MainSim.pullone() # standard extraction for the first 9 times
@@ -272,4 +306,5 @@ class MainSim:
 
 # MainSim.sorted10(1) # sort by rarity
 # MainSim.draw10(1) # draw 10 randomly
-MainSim.draw1(1) # draw 1 randomly
+# MainSim.draw1(1) # draw 1 randomly
+# MainSim.favored10(1) # Favored banner
