@@ -12,6 +12,8 @@ class items:
  # intended but it doesn't work FSR therefore nothing for identities also
 class MainSim: 
     # Set up a lot of foundation so i can do a lot more with this later, some things planned:
+    # To-do list
+    # To-do 1: weighted pool (favored banners)
     # next: draw until you have specific thing
     # statistics of pulls: etc, how much of a session was EGO, 3 stars, Etc
     # statistics of % drawn of each sinner 
@@ -34,7 +36,7 @@ class MainSim:
     # code below 
 
     ### big list of everything in the game (probably a better way to do it)
-    # shorten
+    # shorten + used for prio system
     trashtype = "Trash"
     idtype = "Identity"
     egotype = "EGO"
@@ -236,9 +238,14 @@ class MainSim:
         random.shuffle(MainSim.results_str)
         print(MainSim.results_str) 
     def draw1(count):
-        while count > 0: # the number of 10 extracts to sim
-            MainSim.pullone() # standard extraction for the first 9 times
-            count -= 1
+        while count > 0:
+                MainSim.pullone() # standard extraction for the first 9 times
+                count -= 1
+        Total = int(len(MainSim.results)) - 1
+        while Total > -1:
+            MainSim.results_str.append(MainSim.results[Total].name)
+            Total -= 1
+        random.shuffle(MainSim.results_str)
         print(MainSim.results_str)
     def sorted10(count): # need to sort by value items.rarity instead of .name alphabetical - maybe return values from pullone() or tenth()?
         while count > 0: # the number of 10 extracts to sim
@@ -265,4 +272,4 @@ class MainSim:
 
 # MainSim.sorted10(1) # sort by rarity
 # MainSim.draw10(1) # draw 10 randomly
-# MainSim.draw1(1) # draw 1 randomly
+MainSim.draw1(1) # draw 1 randomly
